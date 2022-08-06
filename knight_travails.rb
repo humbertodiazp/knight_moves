@@ -6,14 +6,12 @@ class Knight
 
     # a knight can move up one place and two to the side 
     def knigh_move(start_point)
-        x = start_point[0] += 1
-        y= end_point[1] += 1 
-    
-         if start_point[0] >= 0 & start_point[0] 
-        
-        if end_point    <= 8 & y >= 0 & y <= 8 
-
-
+        x = start_point[0] 
+        y= end_point[1] 
+        # logic herer needs to be improved
+         if x >= 0 & x[0] <= 8 & if y >= 0 & y <= 8 
+            start_point[0] += 1
+            end_point[1] += 1 
     end
 end
 
