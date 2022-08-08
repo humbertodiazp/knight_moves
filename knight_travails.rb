@@ -30,6 +30,10 @@ def knight_moves(start_point, end_point)
     # it needs to do this based on going up 1 and 2 to the side, or vice versa. 
     # need a conditional statement that determines whether the knight moves up or down, i.e. adds to x or subtracts
     # and the same goes for y. 
+    # if x > a then knight needs to move to the left of the board and vice versa 
+    # if y > b then knight needs to move up the board and vice versa
+
+
     a = end_point[0]
     puts a
     b = end_point[1]
