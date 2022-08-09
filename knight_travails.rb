@@ -9,6 +9,9 @@ class Knight
     #  once we have all possible moves, we can recursively call other coordinates to figure out 
     # which moves will get us to the end_point most efficiently. i.e. find the coordinates closest 
     # to our end_point, then call on those cooridanates recursively to find the fastest route. 
+
+    # need this function to do this: for x add 1, and for y add 2, then for x add 2 and for y add 1 unless at  8
+    # then for x minus 1, and for y minus 2, and then for x minues 2, and for y minus 1 unless at 0 
     def possible_moves(@start_point, @end_point)
         a = end_point[0]
         b = end_point[1]
