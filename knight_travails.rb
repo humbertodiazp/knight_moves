@@ -12,115 +12,166 @@ class Knight
 
     # need this function to do this: for x add 1, and for y add 2, then for x add 2 and for y add 1 unless at  8
     # then for x minus 1, and for y minus 2, and then for x minues 2, and for y minus 1 unless at 0 
-    def possible_moves(start_point, end_point)
-        a = end_point[0][0]
-        b = end_point[0][1]
-        x = @start_point[0][0]
-        y = @start_point[0][1]
 
-        moves_array = [[x,y]]
 
-        if start_point == end_point
-            moves_array.push([end_point])
-            puts moves_array
-        end
-        
-        a > 8  || b > 8  ? "": return 'invalid move, outside of board'
-        a < 0  || b < 0  ? "": return 'invalid move, outside of board'
-
-        x > 8  || y > 8  ? "": return 'invalid move, outside of board'
-        x < 0  || y < 0  ? "": return 'invalid move, outside of board'
-
+    def knight_moves(start_point, end_point)
+        start_point = start_point
+        end_point = end_point 
+        moves_array = [start_point]
         n = 0
         
-        x > a & y > b ? moves_array.push([x - 1, y - 2]) : moves_array.push([x + 1, y + 2])
+        p moves_array 
         
-        n += 1
-
-        possible_moves(moves_array[n], end_point)
-    end
-    
-
-        #     if x > 
-        #     new_y = 
-
-        # if x >= 0 & y >= 0 
-        #     moves_array.push(x = x + 1, y = y + 2)
-        # if x >= 1 & y >= 2
-        #     moves_array.push(x = x - 1, y = y - 2)
-        #      end 
-        #  end
-
-        
-
-
-    
-
-    # a knight can move up one place and two to the side 
-    def knight_moves(@start_point, @end_point)
-
-        a = end_point[0]
-         puts a
-        b = end_point[1]
-        puts b
-        if  a > 8 || b > 8 
-            return 'invalid move, outside of board'
-        end 
-        x = @start_point[0].to_s 
-        y = @start_point[1].to_s
-        a = @end_point[0].to_s 
-        b = @end_point[1].to_s
-        # logic herer needs to be improved
-         while x & y < a & b 
-            x += 1 & y += 2 
-            puts "[#{x}, #{y}]"
+        if start_point == end_point
+          moves_array.push([end_point])
+          puts moves_array
+          return
         end
-            return knight_moves(x, y)
-    end
-end
+      
+        
+        a = end_point[0]
+        "this is a: #{a}"
+        b = end_point[1]
+        "this is b: #{b}"
+        x = start_point[0]
+        puts "this is x: #{x}"
+        y = start_point[1]
+        "this is y #{y}"
+      
+        a > 8  || b > 8  ?  abort('invalid move, outside of board') : ""
+        a < 0  || b < 0  ? abort('invalid move, outside of board') : ""
+      
+        x > 8  || y > 8  ? abort('invalid move, outside of board') : ""
+        x < 0  || y < 0  ? abort('invalid move, outside of board') : ""
+      
+        x < a && y > b ? moves_array.push([a - 1, b + 2]) :        moves_array.push([a + 1, b - 2])    
+      
+      
+              
+          n += 1
+      
+          knight_moves(moves_array[n], end_point)
+      end
+      
+          #     x > a && y < b ? 
+      
+            
+          # x > a && y > b ? moves_array.push([x - 2, y - 1]) :                moves_array.push([x + 1, y + 2)
+        
+          # y > b ? moves_array.push([x - 1, y - 2]) :                moves_array.push([x + 1, y + 2])
+      
+      knight_moves([0,0],[3,3])
 
-def knight_moves(start_point, end_point)
 
-    # the knight has to move up or down depending on whether the end point is higher or lower than the start.
-    # it needs to do this based on going up 1 and 2 to the side, or vice versa. 
-    # need a conditional statement that determines whether the knight moves up or down, i.e. adds to x or subtracts
-    # and the same goes for y. 
+#     def possible_moves(start_point, end_point)
+#         a = end_point[0][0]
+#         b = end_point[0][1]
+#         x = @start_point[0][0]
+#         y = @start_point[0][1]
+
+#         moves_array = [[x,y]]
+
+#         if start_point == end_point
+#             moves_array.push([end_point])
+#             puts moves_array
+#         end
+        
+#         a > 8  || b > 8  ? "": return 'invalid move, outside of board'
+#         a < 0  || b < 0  ? "": return 'invalid move, outside of board'
+
+#         x > 8  || y > 8  ? "": return 'invalid move, outside of board'
+#         x < 0  || y < 0  ? "": return 'invalid move, outside of board'
+
+#         n = 0
+        
+#         x > a & y > b ? moves_array.push([x - 1, y - 2]) : moves_array.push([x + 1, y + 2])
+        
+#         n += 1
+
+#         possible_moves(moves_array[n], end_point)
+#     end
     
-    # need to calculate all the possible moves for a knight piece, based on its start_point coordinates
-    #  i.e. if 0,0 is the start, then it can go to (1,2)(2,1) if start is (3,3) it can go to (1,2)(2,1)(5,4)(4,5)
-    if x > a then knight needs to move to the left of the board and vice versa 
-    if y > b then knight needs to move up the board and vice versa
 
-        so if x greater than a subtract 2 from end point to figure out next x move for knight 
+#         #     if x > 
+#         #     new_y = 
 
-    also cannot be smaller than 0, so it doesnt go over the board
+#         # if x >= 0 & y >= 0 
+#         #     moves_array.push(x = x + 1, y = y + 2)
+#         # if x >= 1 & y >= 2
+#         #     moves_array.push(x = x - 1, y = y - 2)
+#         #      end 
+#         #  end
 
-    # need function that will output all the possible moves for a knight based on its start_point
+        
 
-    a = end_point[0]
-    puts a
-    b = end_point[1]
-    puts b
-    if  a > 8 || b > 8 
-        return 'invalid move, outside of board'
-    end 
-    x = start_point[0]
-    p x
-    y = start_point[1]
-    p y 
+
     
-    # logic herer needs to be improved
-     while x <= a && b <= y
-        x += 1 & y += 2 
-        puts "[#{x}, #{y}]"
-    end
-end
+
+#     # a knight can move up one place and two to the side 
+#     def knight_moves(@start_point, @end_point)
+
+#         a = end_point[0]
+#          puts a
+#         b = end_point[1]
+#         puts b
+#         if  a > 8 || b > 8 
+#             return 'invalid move, outside of board'
+#         end 
+#         x = @start_point[0].to_s 
+#         y = @start_point[1].to_s
+#         a = @end_point[0].to_s 
+#         b = @end_point[1].to_s
+#         # logic herer needs to be improved
+#          while x & y < a & b 
+#             x += 1 & y += 2 
+#             puts "[#{x}, #{y}]"
+#         end
+#             return knight_moves(x, y)
+#     end
+# end
+
+# def knight_moves(start_point, end_point)
+
+#     # the knight has to move up or down depending on whether the end point is higher or lower than the start.
+#     # it needs to do this based on going up 1 and 2 to the side, or vice versa. 
+#     # need a conditional statement that determines whether the knight moves up or down, i.e. adds to x or subtracts
+#     # and the same goes for y. 
+    
+#     # need to calculate all the possible moves for a knight piece, based on its start_point coordinates
+#     #  i.e. if 0,0 is the start, then it can go to (1,2)(2,1) if start is (3,3) it can go to (1,2)(2,1)(5,4)(4,5)
+#     if x > a then knight needs to move to the left of the board and vice versa 
+#     if y > b then knight needs to move up the board and vice versa
+
+#         so if x greater than a subtract 2 from end point to figure out next x move for knight 
+
+#     also cannot be smaller than 0, so it doesnt go over the board
+
+#     # need function that will output all the possible moves for a knight based on its start_point
+
+#     a = end_point[0]
+#     puts a
+#     b = end_point[1]
+#     puts b
+#     if  a > 8 || b > 8 
+#         return 'invalid move, outside of board'
+#     end 
+#     x = start_point[0]
+#     p x
+#     y = start_point[1]
+#     p y 
+    
+#     # logic herer needs to be improved
+#      while x <= a && b <= y
+#         x += 1 & y += 2 
+#         puts "[#{x}, #{y}]"
+#     end
+# end
 
 
 
-puts knight_moves([0,0], [8,8])
+# puts knight_moves([0,0], [8,8])
 
- (5,5)(4,3)
+#  (5,5)(4,3)
 
 
-                (0,1)goes outside the 8x8 board ``
+#                 (0,1)goes outside the 8x8 board ``
