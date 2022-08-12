@@ -12,29 +12,49 @@ class Knight
 
     # need this function to do this: for x add 1, and for y add 2, then for x add 2 and for y add 1 unless at  8
     # then for x minus 1, and for y minus 2, and then for x minues 2, and for y minus 1 unless at 0 
-    def possible_moves(@start_point, @end_point)
-        a = end_point[0]
-        b = end_point[1]
-        x = @start_point[0] 
-        y = @start_point[1]
-        if  a > 8 || b > 8 
-            return 'invalid move, outside of board'
-        end 
+    def possible_moves(start_point, end_point)
+        a = end_point[0][0]
+        b = end_point[0][1]
+        x = @start_point[0][0]
+        y = @start_point[0][1]
 
-        moves_array = [x,y]
+        moves_array = [[x,y]]
 
-        if x >= 0 & y >= 0 
-             moves_array.each do |x, y|
-              x += 1
-              y += 2
-              moves_array.push(x, y)
-             end 
-         end
+        if start_point == end_point
+            moves_array.push([end_point])
+            puts moves_array
+        end
+        
+        a > 8  || b > 8  ? "": return 'invalid move, outside of board'
+        a < 0  || b < 0  ? "": return 'invalid move, outside of board'
+
+        x > 8  || y > 8  ? "": return 'invalid move, outside of board'
+        x < 0  || y < 0  ? "": return 'invalid move, outside of board'
+
+        n = 0
+        
+        x > a & y > b ? moves_array.push([x - 1, y - 2]) : moves_array.push([x + 1, y + 2])
+        
+        n += 1
+
+        possible_moves(moves_array[n], end_point)
+    end
+    
+
+        #     if x > 
+        #     new_y = 
+
+        # if x >= 0 & y >= 0 
+        #     moves_array.push(x = x + 1, y = y + 2)
+        # if x >= 1 & y >= 2
+        #     moves_array.push(x = x - 1, y = y - 2)
+        #      end 
+        #  end
 
         
 
 
-    end
+    
 
     # a knight can move up one place and two to the side 
     def knight_moves(@start_point, @end_point)
