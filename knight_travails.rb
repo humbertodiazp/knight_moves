@@ -1,5 +1,15 @@
 class KnightMove
     attr_accessor :start_point, :parent 
+
+     # need function that will output all the possible moves for a knight based on its start_point
+    #  once we have all possible moves, we can recursively call other coordinates to figure out 
+    # which moves will get us to the end_point most efficiently. i.e. find the coordinates closest 
+    # to our end_point, then call on those cooridanates recursively to find the fastest route. 
+
+    # need this function to do this: for x add 1, and for y add 2, then for x add 2 and for y add 1 unless at  8
+    # then for x minus 1, and for y minus 2, and then for x minues 2, and for y minus 1 unless at 0 
+
+
     
     # rather than using conditional logic to determine all possible moves, 
     # create an array of all possible moves 
@@ -15,10 +25,9 @@ class KnightMove
         @@move_list.push(start_point)
     end
 
-      #  the self below is the original start_point
-    #    or start_point, or the parent if you will. the child is the new start_point
-    #    that will be created 
-    # this links a child to a parent. the self is the parent, because the self is the start_point
+     #  the self below is the original start_point the class is referencing itself before the mapping
+    #  of its childre. the child is the new start_point that will be created 
+    # this maps or links the child to a parent. the self is the parent, because the self is the start_point
     #  before the first use of .map
 
     def children
@@ -55,13 +64,5 @@ knight_moves([1,1], [8,8])
      
 
     
-    # need function that will output all the possible moves for a knight based on its start_point
-    #  once we have all possible moves, we can recursively call other coordinates to figure out 
-    # which moves will get us to the end_point most efficiently. i.e. find the coordinates closest 
-    # to our end_point, then call on those cooridanates recursively to find the fastest route. 
-
-    # need this function to do this: for x add 1, and for y add 2, then for x add 2 and for y add 1 unless at  8
-    # then for x minus 1, and for y minus 2, and then for x minues 2, and for y minus 1 unless at 0 
-
-
+   
 
