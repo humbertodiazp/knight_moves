@@ -15,12 +15,16 @@ class KnightMove
         @@move_list.push(start_point)
     end
 
+      #  the self below is the original start_point
+    #    or start_point, or the parent if you will. the child is the new start_point
+    #    that will be created 
+    # this links a child to a parent. the self is the parent, because the self is the start_point
+    #  before the first use of .map
+
     def children
         MOVES.map { |m| [@start_point[0] + m[0], @start_point[1] + m[1]] }
                        .keep_if { |e| KnightMove.valid?(e) }
                        .reject { |e| @@move_list.include?(e) }
-                        #  the self here is the original position or start_point, or the parent if you will. the child is the new position that will be created 
-                        # this links a child to a parent. the self is the parent, because the self is the position before the first use of .map
                        .map { |e| KnightMove.new(e, self) }
     end
     
@@ -32,13 +36,14 @@ end
 
 def display_parent(node)
     display_parent(node.parent) unless node.parent.nil?
-    p node.position
+    p node.start_point
+    
 end  
     
-def knight_moves(start_point, end_point)
+def knight_moves(start_pos, end_point)
     queue = []
-    current_node = KnightMove.new(start_point, nil)
-    until current_node.position == end_point
+    current_node = KnightMove.new(start_pos, nil)
+    until current_node.start_point == end_point
         current_node.children.each { |child| queue.push(child) }
         current_node = queue.shift
     end
